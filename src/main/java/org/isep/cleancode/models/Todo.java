@@ -1,4 +1,4 @@
-package org.isep.cleancode;
+package org.isep.cleancode.models;
 
 // import java.time.LocalDate;
 
