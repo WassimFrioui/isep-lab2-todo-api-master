@@ -9,7 +9,7 @@ public class Todo {
     private String name;
     private String dueDate; // I out this as String because i have a problem with LocalDate
 
-    public Todo(String name) {
+    public Todo(String name, String dueDate2) {
         this.name = name;
     }
 
