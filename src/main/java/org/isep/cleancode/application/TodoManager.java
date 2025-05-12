@@ -3,17 +3,18 @@ package org.isep.cleancode.application;
 import java.util.List;
 
 import org.isep.cleancode.models.Todo;
-import org.isep.cleancode.persistence.TodoRepository;
+import org.isep.cleancode.application.ITodoRepository;
 
 public class TodoManager {
-    private final TodoRepository todoRepository;
+        private final ITodoRepository itodoRepository;
 
-    public TodoManager(TodoRepository todoRepository) {
-        this.todoRepository = todoRepository;
+
+    public TodoManager(ITodoRepository itodoRepository) {
+        this.itodoRepository = itodoRepository;
     }
 
     public List<Todo> getAllTodos() {
-        return todoRepository.getAllTodos();
+        return itodoRepository.getAllTodos();
     }
 
     public void createTodo(Todo todo) {
@@ -26,11 +27,11 @@ public class TodoManager {
             throw new IllegalArgumentException("Due date is required");
         }
 
-        if (todoRepository.existsByName(todo.getName())) {
+        if (itodoRepository.existsByName(todo.getName())) {
             throw new IllegalArgumentException("Todo with this name already exists");
         }
 
-        todoRepository.saveTodos(todo);
+        itodoRepository.saveTodos(todo);
     }
 
 

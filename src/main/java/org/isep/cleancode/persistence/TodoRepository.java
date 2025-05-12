@@ -4,18 +4,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.isep.cleancode.models.Todo;
+import org.isep.cleancode.application.ITodoRepository;
 
-public class TodoRepository {
+public class TodoRepository implements ITodoRepository {
         private final List<Todo> todos = new ArrayList<>();
 
+        @Override
         public List<Todo> getAllTodos() {
                 return todos;
         }
 
+        @Override
         public void saveTodos(Todo todo) {
                 todos.add(todo);
         }
 
+        @Override
         public boolean existsByName(String name) {
             for (Todo todo : todos) {
                 if (todo.getName().equals(name)) {
@@ -25,12 +29,4 @@ public class TodoRepository {
             return false;
         }
 
-        public Todo getTodoByName(String name) {
-            for (Todo todo : todos) {
-                if (todo.getName().equals(name)) {
-                    return todo;
-                }
-            }
-            return null;
-        }
 }
